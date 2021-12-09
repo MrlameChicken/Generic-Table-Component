@@ -1,0 +1,7 @@
+<app-tablecomp [DATA]=EMP_DATA (deletedRow)="deleteRecordHandler($event,EMP_DATA)"
+(updatedRow)="UpdateRowHandler($event,EMP_DATA)" (AddedRow)="AddRowHandler($event,EMP_DATA)"
+></app-tablecomp>
+<app-tablecomp [DATA]=STUD_DATA (deletedRow)="deleteRecordHandler($event,STUD_DATA)"
+(updatedRow)="UpdateRowHandler($event,STUD_DATA)" (AddedRow)="AddRowHandler($event,STUD_DATA)"
+></app-tablecomp>
+<!-- <app-tablecomp [EMP_DATA]=STUD_DATA></app-tablecomp> -->

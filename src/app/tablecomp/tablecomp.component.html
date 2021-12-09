@@ -1,0 +1,52 @@
+<p>Working!!</p>
+<div class="m-2">
+    <div class="row">
+        <div class="col-sm-auto">
+            <input type="checkbox" [disabled]="isChecked" [checked]="isChecked" (change)="ShowAll($event)">Show All
+        </div>
+        <div class="col-sm-auto" *ngFor="let column of Columns; index as i">
+            <input type="checkbox" [checked]="ColumnsShow[i]" (change)="onCheckboxChange($event,i)">{{column}}
+        </div>
+    </div>
+<table>
+    
+    <th *ngFor = "let column of Columns; index as i" [hidden]="!ColumnsShow[i]">
+        
+       <input  type = "checkbox" [checked]="ColumnsShow[i]" (change)="onCheckboxChange($event,i)"> {{column}}
+       
+    </th>
+      <tr *ngFor = "let row of DATA; index as j">
+        
+        <td *ngFor = "let column of Columns; index as i" [hidden]="!ColumnsShow[i]">
+        <input type="text" *ngIf="!isUpdate[j]" [(ngModel)]="row[column]">
+         <ng-container *ngIf="isUpdate[j]"> {{row[column]}} </ng-container>
+        </td>
+        <button type="button" class="btn btn-primary btn-sm mx-2 rounded-3" (click)="updateFields(j,row)" >
+           <fa-icon [icon] = "faFeatherAlt"></fa-icon>
+        </button>
+        <button type="button" class="btn btn-danger btn-sm mx-2 rounded-3" (click)="deleteRecord($event,row)">
+            <fa-icon [icon] = "faTrashAlt"></fa-icon>
+         </button>
+         <button type="button" class="btn btn-success btn-sm mx-2 rounded-3" *ngIf="!isUpdate[j]" (click)="saveRecord(j,row)">
+            <fa-icon [icon] = "faSave"></fa-icon>
+         </button>
+      </tr> 
+      <tr *ngIf="addNew">
+          <td *ngFor = "let column of Columns">
+            <input type="text" [(ngModel)]="dataModel[column]">
+          </td>
+
+      </tr>
+           
+    <!-- <ng-container *ngFor="let group of Columns">
+        <tr><td><h2>{{group}}</h2></td></tr>
+        <tr *ngFor="let item of EMP_DATA"><td>{{item}}</td></tr>
+    </ng-container> -->
+</table>
+<button type="button" class="btn btn-success btn-sm my-2 rounded-3" (click)="addNewRecord()">
+    Add new member
+    <fa-icon [icon] = "faPlusCircle"></fa-icon>
+</button>
+</div>
+
+
