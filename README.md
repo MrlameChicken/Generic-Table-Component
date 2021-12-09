@@ -1,6 +1,12 @@
-# AngularTutorial
+# Generic Table
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.10.
+
+## Description
+
+There are 2 components - tablecomponent and MainComponent in the application. Tablecomponent provides a generic tag which you can use anywhere by just passing data object and it will be displayed in the form of tables. This component also provides functionality to create, update, delete any record in the table. 
+
+The MainComponent is where I have stored a temporary data object which can be easily replaced with an api call to a database. MainCompoenet also contains generic logic to get data from child component(tablecomponent) where the functions are performed. This should also be replaced with a database call.
 
 ## Development server
 
